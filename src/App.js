@@ -2,6 +2,7 @@ import React from "react";
 import { GlobalFonts } from "./components/GlobalFonts";
 import { GlobalStyles } from "./components/GlobalStyles";
 import Header from "./components/Header/Header";
+import AppLayout from "./components/Layout/AppLayout";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <GlobalStyles/>
       <GlobalFonts/>
       <Header/>
+      <AppLayout/>
     </>
   );
 }

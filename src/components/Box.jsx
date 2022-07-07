@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { color, flexbox, space } from "styled-system";
+import { border, color, flexbox, space } from "styled-system";
 
 export const Box = styled.div`
     position: relative;
+    height: ${props => props.h};
+    width: ${props => props.w};
 
     ${space}
     ${color}
     ${flexbox}
+    ${border}
 `
