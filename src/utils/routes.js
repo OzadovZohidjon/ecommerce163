@@ -6,11 +6,11 @@ import Home from "../pages/Home";
 import Product from "../pages/Product";
 
 export const routes = [
-    {
-        id: 1,
-        path: '/',
-        component: <Home/>
-    },
+    // {
+    //     id: 1,
+    //     path: '/',
+    //     component: <Home/>
+    // },
     {
         id: 2,
         path: '/product/:slug',

@@ -1,14 +1,18 @@
 import React from 'react'
 import HeaderBottom from './HeaderBottom'
-import HeaderMiddle from './HeaderMiddle'
+import HeaderMid from './HeaderMid'
 import HeaderTop from './HeaderTop'
 
-export default function Header() {
+function Header({setOpen}) {
   return (
-    <>
-        <HeaderTop/>
-        <HeaderMiddle/>
-        <HeaderBottom/>
-    </>
-  )
+    <header className="header">
+        <div className="container">
+            <HeaderTop/>
+            <HeaderMid setOpen={setOpen}/>
+            <HeaderBottom/>
+        </div>
+    </header>
+)
 }
+
+export default Header
