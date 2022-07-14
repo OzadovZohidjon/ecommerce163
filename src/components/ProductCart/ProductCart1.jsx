@@ -11,7 +11,7 @@ import {
     ProductCartBtn,
 } from './ProductCartStyle'
 
-function ProductCart1({ product, addCart, ...props }) {
+function ProductCart1({ product, store, ...props }) {
     return (
         <ProductCartStyle>
             <Box h='60%'>
@@ -42,7 +42,14 @@ function ProductCart1({ product, addCart, ...props }) {
                         </ProductCartOldPrice>
                     </Box>
 
-                    <ProductCartBtn onClick={() => addCart(product.id)}>
+                    <ProductCartBtn
+                        onClick={() =>
+                            store.dispatch({
+                                type: 'add_to_cart',
+                                item: product,
+                            })
+                        }
+                    >
                         <ProductCartBtnIcon />В корзину
                     </ProductCartBtn>
                 </Flex>

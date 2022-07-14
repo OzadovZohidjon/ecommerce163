@@ -13,14 +13,11 @@ function App({ store }) {
         <>
             <GlobalStyles open={open} />
             <GlobalFonts />
-            <Header setOpen={setOpen} />
-            <AppLayout
-                products={store.state.products}
-                addCart={store.addCart}
-            />
+            <Header store={store} setOpen={setOpen} />
+            <AppLayout products={store.state.products} store={store} />
             <Modal
                 products={store.state.cartProducts}
-                removeCart={store.removeCart}
+                store={store}
                 open={open}
                 setOpen={setOpen}
             />

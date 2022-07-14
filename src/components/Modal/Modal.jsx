@@ -5,7 +5,7 @@ import { H3, Paragraph } from '../Typography';
 import GlobalIcon from '../icons/GlobalIcon';
 import { icons } from './../../utils/iconsData';
 
-function Modal({open, setOpen, products, removeCart}) {
+function Modal({open, setOpen, products, store}) {
   return (
     <ModalStyle open={open}>
         <ModalPanelStyle open={open}>
@@ -22,7 +22,7 @@ function Modal({open, setOpen, products, removeCart}) {
                 <Box flex='1 1 auto' overflowY="scroll">
                     {
                         products.map((item, i) => (
-                            <ProductCart2 key={i} product={item} removeCart={removeCart}/>
+                            <ProductCart2 key={i} product={item} store={store}/>
                         ))
                     }
                 </Box>

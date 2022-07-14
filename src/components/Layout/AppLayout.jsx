@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { routes } from '../../utils/routes'
 import Home from './../../pages/Home';
 
-export default function AppLayout({products, addCart}) {
+export default function AppLayout({products, store}) {
   return (
     <main className='main'>
         <Routes>
@@ -14,7 +14,7 @@ export default function AppLayout({products, addCart}) {
                     )
                 })
             }
-            <Route path='/' element={<Home products={products} addCart={addCart}/>}/>
+            <Route path='/' element={<Home products={products} store={store}/>}/>
         </Routes>
     </main>
   )
