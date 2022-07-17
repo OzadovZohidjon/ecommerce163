@@ -6,7 +6,7 @@ import GlobalIcon from './../icons/GlobalIcon'
 import { icons } from './../../utils/iconsData'
 import Counter from './../Counter/Counter'
 
-function ProductCart2({ product, store, ...props }) {
+function ProductCart2({ product, removeToCart, ...props }) {
     return (
         <ProductCart2Style>
             <Box flex='0 0 90px' h='90px'>
@@ -34,14 +34,7 @@ function ProductCart2({ product, store, ...props }) {
                     </Box>
 
                     <Box>
-                        <Button
-                            onClick={() =>
-                                store.dispatch({
-                                    type: 'remove_to_cart',
-                                    id: product.id,
-                                })
-                            }
-                        >
+                        <Button onClick={() => removeToCart(product.id)}>
                             <GlobalIcon
                                 width='24px'
                                 height='24px'

@@ -1,6 +1,8 @@
+const SEARCH_TEXT = 'search_text'
+
 function searchTitleReducer(state, action) {
     switch (action.type) {
-        case 'search_text':
+        case SEARCH_TEXT:
             state = action.text
             return state
 
@@ -10,3 +12,10 @@ function searchTitleReducer(state, action) {
 }
 
 export default searchTitleReducer
+
+export function searchTextAC(text) {
+    return {
+        type: SEARCH_TEXT,
+        text: text,
+    }
+}

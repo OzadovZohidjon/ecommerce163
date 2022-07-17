@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import StoreContext from './context/Context'
 import {
     GlobalFonts,
     GlobalStyles,
@@ -7,20 +8,16 @@ import {
     AppLayout,
 } from './components/index'
 
-function App({ store }) {
-    const [open, setOpen] = useState(false)
+function App() {
+    const store = useContext(StoreContext)
+    const { open } = store.getState()
     return (
         <>
             <GlobalStyles open={open} />
             <GlobalFonts />
-            <Header store={store} setOpen={setOpen} />
-            <AppLayout products={store.state.products} store={store} />
-            <Modal
-                products={store.state.cartProducts}
-                store={store}
-                open={open}
-                setOpen={setOpen}
-            />
+            <Header />
+            <AppLayout />
+            <Modal />
         </>
     )
 }

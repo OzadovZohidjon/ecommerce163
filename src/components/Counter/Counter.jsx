@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CounterStyle } from './CounterStyle'
 import { Button } from './../Button/Button'
 import { Span } from '../Typography'
@@ -17,6 +17,10 @@ function Counter({ qty }) {
             setCount(count - 1)
         }
     }
+
+    useEffect(() => {
+        setCount(qty)
+    }, [qty])
 
     return (
         <CounterStyle>

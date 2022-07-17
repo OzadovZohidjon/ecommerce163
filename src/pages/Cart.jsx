@@ -1,7 +1,10 @@
 import React from 'react'
+import { Container, Title } from '../components'
 
 export default function Cart() {
-  return (
-    <div>Cart</div>
-  )
+    return (
+        <Container>
+            <Title title='Корзина' />
+        </Container>
+    )
 }

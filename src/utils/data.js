@@ -1,11 +1,11 @@
-import { cartProductsReducer, searchTitleReducer } from './reducers/index'
-
-let render = () => {
-    console.log('render')
-}
+import {
+    cartProductsReducer,
+    searchTitleReducer,
+    modalReducer,
+} from './reducers/index'
 
 export const store = {
-    state: {
+    _state: {
         products: [
             {
                 id: 1,
@@ -214,22 +214,33 @@ export const store = {
         ],
         cartProducts: [],
         searchTitle: '',
+        open: false,
+    },
+
+    getState() {
+        return this._state
+    },
+
+    render() {
+        console.log('render')
     },
 
     dispatch(action) {
-        this.state.cartProducts = cartProductsReducer(
-            this.state.cartProducts,
+        this._state.cartProducts = cartProductsReducer(
+            this._state.cartProducts,
             action
         )
 
-        this.state.searchTitle = searchTitleReducer(
-            this.state.searchTitle,
+        this._state.searchTitle = searchTitleReducer(
+            this._state.searchTitle,
             action
         )
-        render()
+
+        this._state.open = modalReducer(this._state.open, action)
+        this.render()
     },
 
     subscribe(observer) {
-        render = observer
+        this.render = observer
     },
 }

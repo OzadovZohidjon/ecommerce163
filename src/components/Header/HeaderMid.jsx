@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CartIcon from '../../assets/icons/HeaderMidIcons/CartIcon'
 import HeartIcon from '../../assets/icons/HeaderMidIcons/HeartIcon'
@@ -7,8 +7,24 @@ import SearchIcon from '../../assets/icons/HeaderMidIcons/SearchIcon'
 import { Button, Container, Flex } from '../index'
 import { H5, SemiSpan } from '../Typography'
 import { CartCount, Circle, SearchBar, SearchInput } from './HeaderElements'
+import StoreContext from './../../context/Context'
+import { searchTextAC } from '../../utils/reducers/searchTitleReducer'
+import { modalOpenAC } from '../../utils/reducers/modalReducer'
+import { sumPrice, sumQty } from './../../utils/helpers'
 
-function HeaderMid({ setOpen, store }) {
+function HeaderMid() {
+    const store = useContext(StoreContext)
+    const { searchTitle, cartProducts } = store.getState()
+
+    function onChangeHandler(text) {
+        store.dispatch(searchTextAC(text))
+    }
+
+    function modalHandler() {
+        console.log(true)
+        store.dispatch(modalOpenAC())
+    }
+
     return (
         <Container>
             <Flex alignItems='center' justifyContent='space-between' py='16px'>
@@ -18,13 +34,8 @@ function HeaderMid({ setOpen, store }) {
 
                 <SearchBar>
                     <SearchInput
-                        onChange={(e) =>
-                            store.dispatch({
-                                type: 'search_text',
-                                text: e.target.value,
-                            })
-                        }
-                        value={store.state.searchTitle}
+                        onChange={(e) => onChangeHandler(e.target.value)}
+                        value={searchTitle}
                         placeholder='Поиск по сайту'
                     />
                     <SearchIcon />
@@ -35,16 +46,24 @@ function HeaderMid({ setOpen, store }) {
                         <HeartIcon />
                     </Circle>
 
-                    <Button onClick={() => setOpen(true)}>
+                    <Button onClick={() => modalHandler()}>
                         <Flex alignItems='center' style={{ gap: '14px' }}>
                             <Circle>
-                                <CartCount>
-                                    <SemiSpan>2</SemiSpan>
-                                </CartCount>
+                                {cartProducts.length > 0 ? (
+                                    <CartCount>
+                                        <SemiSpan>
+                                            {sumQty(cartProducts)}
+                                        </SemiSpan>
+                                    </CartCount>
+                                ) : null}
                                 <CartIcon />
                             </Circle>
 
-                            <H5 color='#E2195B'>16 500 ₽</H5>
+                            {cartProducts.length > 0 ? (
+                                <H5 color='#E2195B'>
+                                    {sumPrice(cartProducts)} ₽
+                                </H5>
+                            ) : null}
                         </Flex>
                     </Button>
                 </Flex>
