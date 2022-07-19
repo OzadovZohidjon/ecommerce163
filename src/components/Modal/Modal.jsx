@@ -1,25 +1,26 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ModalPanelStyle, ModalStyle } from './ModalStyle'
 import { Flex, Button, Box, ProductCart2 } from '../index'
 import { H3, Paragraph } from '../Typography'
 import GlobalIcon from '../icons/GlobalIcon'
 import { icons } from './../../utils/iconsData'
-import StoreContext from './../../context/Context'
-import { modalCloseAC } from './../../utils/reducers/modalReducer'
-import { removeToCartAC } from './../../utils/reducers/cartProductsReducer'
+import { modalCloseAC } from './../../redux/reducers/modalReducer'
+import { removeToCartAC } from './../../redux/reducers/cartProductsReducer'
 import { sumPrice } from '../../utils/helpers'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
 
 function Modal() {
-    const store = useContext(StoreContext)
-    const { open, cartProducts } = store.getState()
+    const dispatch = useDispatch()
+    const { open, cartProducts } = useSelector(state => state)
+
 
     function modalHandler() {
-        store.dispatch(modalCloseAC())
+        dispatch(modalCloseAC())
     }
 
     function removeToCart(id) {
-        store.dispatch(removeToCartAC(id))
+        dispatch(removeToCartAC(id))
     }
     return (
         <ModalStyle open={open}>

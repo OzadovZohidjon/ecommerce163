@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import CartIcon from '../../assets/icons/HeaderMidIcons/CartIcon'
 import HeartIcon from '../../assets/icons/HeaderMidIcons/HeartIcon'
@@ -7,22 +7,22 @@ import SearchIcon from '../../assets/icons/HeaderMidIcons/SearchIcon'
 import { Button, Container, Flex } from '../index'
 import { H5, SemiSpan } from '../Typography'
 import { CartCount, Circle, SearchBar, SearchInput } from './HeaderElements'
-import StoreContext from './../../context/Context'
-import { searchTextAC } from '../../utils/reducers/searchTitleReducer'
-import { modalOpenAC } from '../../utils/reducers/modalReducer'
+import { searchTextAC } from '../../redux/reducers/searchTitleReducer'
+import { modalOpenAC } from '../../redux/reducers/modalReducer'
 import { sumPrice, sumQty } from './../../utils/helpers'
+import { useSelector, useDispatch } from 'react-redux';
 
 function HeaderMid() {
-    const store = useContext(StoreContext)
-    const { searchTitle, cartProducts } = store.getState()
+    const dispatch = useDispatch()
+    const { searchTitle, cartProducts } = useSelector(state => state)
 
     function onChangeHandler(text) {
-        store.dispatch(searchTextAC(text))
+        dispatch(searchTextAC(text))
     }
 
     function modalHandler() {
         console.log(true)
-        store.dispatch(modalOpenAC())
+        dispatch(modalOpenAC())
     }
 
     return (

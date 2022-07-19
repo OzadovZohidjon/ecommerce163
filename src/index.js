@@ -1,22 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-import { store } from './utils/data'
-import StoreContext from './context/Context'
+import store from './redux/store'
 
 const root = ReactDOM.createRoot(document.querySelector('.wrapper'))
 
-function reRender() {
     root.render(
-        <StoreContext.Provider value={store}>
+        <Provider store={store}>
             <BrowserRouter>
-                <App store={store} />
+                <App />
             </BrowserRouter>
-        </StoreContext.Provider>
+        </Provider>
     )
-}
 
-reRender()
-
-store.subscribe(reRender)

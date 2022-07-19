@@ -1,6 +1,8 @@
 const SEARCH_TEXT = 'search_text'
 
-function searchTitleReducer(state, action) {
+const intialState = '';
+
+function searchTitleReducer(state = intialState, action) {
     switch (action.type) {
         case SEARCH_TEXT:
             state = action.text

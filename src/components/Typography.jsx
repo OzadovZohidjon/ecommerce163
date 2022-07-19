@@ -29,7 +29,7 @@ export const H4 = (props) => (
 	<Typography
 		as="h4"
 		fontWeight="600"
-		fontSize="17px"
+		fontSize="18px"
 		{...props}
 	/>
 )

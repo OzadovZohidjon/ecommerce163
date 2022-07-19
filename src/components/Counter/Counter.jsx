@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CounterStyle } from './CounterStyle'
 import { Button } from './../Button/Button'
 import { Span } from '../Typography'
 
-function Counter({ qty }) {
-    let [count, setCount] = useState(qty)
-
-    function Increment() {
-        setCount(count + 1)
-    }
-
-    function Decrement() {
-        if (count === 1) {
-            setCount(1)
-        } else {
-            setCount(count - 1)
-        }
-    }
-
-    useEffect(() => {
-        setCount(qty)
-    }, [qty])
-
+function Counter({ qty, decrement, increment }) {
     return (
         <CounterStyle>
-            <Button onClick={() => Decrement()}>-</Button>
-            <Span>{count}</Span>
-            <Button onClick={() => Increment()}>+</Button>
+            <Button onClick={() => decrement()}>-</Button>
+            <Span>{qty}</Span>
+            <Button onClick={() => increment()}>+</Button>
         </CounterStyle>
     )
 }

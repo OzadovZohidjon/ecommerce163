@@ -57,3 +57,16 @@ export const ProductCart2Style = styled.div`
     padding: 20px;
     gap: 15px;
 `
+
+export const ProductCart3Style = styled.div`
+    display: flex;
+    align-items: start;
+    padding: 20px;
+    gap: 15px;
+    
+    &:not(:last-child){
+        border-bottom: 1px solid #E3E3E8;
+    }
+`
+
+

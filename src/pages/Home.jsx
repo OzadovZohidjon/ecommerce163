@@ -1,14 +1,13 @@
 import React from 'react'
-import { useContext } from 'react'
 import { Container, ProductList, Title } from '../components'
-import StoreContext from '../context/Context'
-import { addToCartAC } from '../utils/reducers/cartProductsReducer'
+import { addToCartAC } from '../redux/reducers/cartProductsReducer'
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Home() {
-    const store = useContext(StoreContext)
-    const { products } = store.getState()
+    const dispatch = useDispatch()
+    const { products } = useSelector(state => state)
     function addToCart(product) {
-        store.dispatch(addToCartAC(product))
+        dispatch(addToCartAC(product))
     }
     return (
         <>

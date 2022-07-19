@@ -1,7 +1,9 @@
 const MODAL_OPEN = 'modal_open'
 const MODAL_CLOSE = 'modal_close'
 
-function modalReducer(state, action) {
+const intialState = false;
+
+function modalReducer(state = intialState, action) {
     switch (action.type) {
         case MODAL_OPEN:
             console.log()

@@ -9,6 +9,7 @@ import Title from "./Title/Title";
 import ProductList from "./ProductList/ProductList";
 import ProductCart1 from "./ProductCart/ProductCart1";
 import ProductCart2 from "./ProductCart/ProductCart2";
+import ProductCart3 from "./ProductCart/ProductCart3";
 import Modal from "./Modal/Modal";
 import Header from "./Header/Header";
 import AppLayout from "./Layout/AppLayout";
@@ -23,6 +24,7 @@ export {
     ProductList,
     ProductCart1,
     ProductCart2,
+    ProductCart3,
     Img,
     Modal,
     GlobalStyles,

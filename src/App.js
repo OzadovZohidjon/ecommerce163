@@ -7,10 +7,12 @@ import {
     Header,
     AppLayout,
 } from './components/index'
+import {useSelector} from 'react-redux'
+
 
 function App() {
-    const store = useContext(StoreContext)
-    const { open } = store.getState()
+    const {open} = useSelector((state) => state)
+   
     return (
         <>
             <GlobalStyles open={open} />
