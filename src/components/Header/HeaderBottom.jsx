@@ -1,93 +1,43 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import DiscountIcon from '../../assets/icons/DiscountIcon'
-import PopDownIcon from '../../assets/icons/HeaderTopIcons/PopDownIcon'
-import { Container } from '../Container'
-import { Flex } from '../Flex'
-import { H5, SemiSpan } from '../Typography'
-import { HeaderBottomLink, HeaderLink, HeaderBottomStyle } from './HeaderElements'
-
+import React, {useState} from 'react'
+import { H5} from '../Typography'
+import {  HeaderLink, HeaderBottomStyle } from './HeaderElements'
+import axios from 'axios'
+import { useEffect } from 'react'
+import {Dropdown,Flex, Container} from '../index';
 
 function HeaderBottom() {
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
+  
+  useEffect(() => {
+    setLoading(true)
+    axios.get('https://ecommerce.main-gate.appx.uz/dev/v1/category/list').then(function (response) {
+      setCategories(response.data.categories)
+      setLoading(false)
+  }).catch(function (error) {
+    console.log(error)
+  })
+
+  }, [])
+  
   return (
     <HeaderBottomStyle>
       <Container>
         <Flex alignItems="center" justifyContent="space-between">
-          <Flex>
-            <DiscountIcon/>
-
-              <H5 color="#E2195B" ml="10px">
-                АКЦИИ
-              </H5>
-
-          </Flex>
-
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Цветы поштучно
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Розы
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Букеты
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Композиции
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Подарки
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-          <Flex>
-            <HeaderLink to="/">
-              <H5>
-                Шары
-              </H5>
-            </HeaderLink>
-
-            <PopDownIcon/>
-          </Flex>
-
-          <HeaderLink to="/">
-            <H5>
-              Свадебные букеты
-            </H5>
-          </HeaderLink>
-
-          <HeaderLink to="/">
-            <H5>
-              Повод
-            </H5>
-          </HeaderLink>
+          {
+            loading ? <H5>Loading...</H5> : categories.map(item => {
+              return (
+                <>
+                  {item.children.length > 0 ? <Dropdown item={item} key={item.id}/> : <HeaderLink to={`/category/${item.slug}`} key={item.id}>
+                  <H5>
+                    {item.name_ru}
+                  </H5>
+                  </HeaderLink>
+                  }
+                </>
+              )
+            })
+          }
         </Flex>
       </Container>
     </HeaderBottomStyle>

@@ -11,8 +11,8 @@ import {useSelector} from 'react-redux'
 
 
 function App() {
-    const {open} = useSelector((state) => state)
-   
+    const { open } = useSelector((state) => state)
+
     return (
         <>
             <GlobalStyles open={open} />

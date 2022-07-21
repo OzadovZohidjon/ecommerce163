@@ -14,6 +14,7 @@ import Modal from "./Modal/Modal";
 import Header from "./Header/Header";
 import AppLayout from "./Layout/AppLayout";
 import { Button } from "./Button/Button";
+import Dropdown from "./Dropdown/Dropdown";
 
 export {
     Box,
@@ -31,5 +32,6 @@ export {
     GlobalFonts,
     Header,
     AppLayout,
-    Button
+    Button,
+    Dropdown
 }
