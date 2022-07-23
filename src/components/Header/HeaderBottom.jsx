@@ -4,20 +4,16 @@ import {  HeaderLink, HeaderBottomStyle } from './HeaderElements'
 import axios from 'axios'
 import { useEffect } from 'react'
 import {Dropdown,Flex, Container} from '../index';
+import { getCategories } from './../../redux/reducers/categoryReducer';
+import { useDispatch, useSelector } from 'react-redux';
 
 function HeaderBottom() {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(false)
+  const { categoryState } = useSelector(state => state)
+  const {loading, categories} = categoryState
+  const dispatch = useDispatch()
   
   useEffect(() => {
-    setLoading(true)
-    axios.get('https://ecommerce.main-gate.appx.uz/dev/v1/category/list').then(function (response) {
-      setCategories(response.data.categories)
-      setLoading(false)
-  }).catch(function (error) {
-    console.log(error)
-  })
-
+    dispatch(getCategories())
   }, [])
   
   return (
@@ -25,7 +21,7 @@ function HeaderBottom() {
       <Container>
         <Flex alignItems="center" justifyContent="space-between">
           {
-            loading ? <H5>Loading...</H5> : categories.map(item => {
+            loading ? <H5>Loading...</H5> : categories?.map(item => {
               return (
                 <>
                   {item.children.length > 0 ? <Dropdown item={item} key={item.id}/> : <HeaderLink to={`/category/${item.slug}`} key={item.id}>

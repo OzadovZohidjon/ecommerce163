@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ProductCartBtnIcon from '../../assets/icons/MainIcons/ProductCartBtnIcon'
 import { Box } from '../Box'
 import { Flex } from '../Flex'
@@ -12,6 +13,7 @@ import {
 } from './ProductCartStyle'
 
 function ProductCart1({ product, addToCart, ...props }) {
+    console.log(product)
     return (
         <ProductCartStyle>
             <Box h='60%'>
@@ -24,9 +26,11 @@ function ProductCart1({ product, addToCart, ...props }) {
 
             <ProductCart1ContentStyle>
                 <Flex flexDirection='column'>
-                    <H5 color='#222A46' mb='10px'>
-                        {product.name_ru}
-                    </H5>
+                    <Link to={`/product/${product.slug}`}>
+                        <H5 color='#222A46' mb='10px'>
+                            {product.name_ru}
+                        </H5>
+                    </Link>
 
                     <H6 fontWeight='400' color=' #505567'>
                         Высота: 60 см, Ширина: 35 см

@@ -5,7 +5,7 @@ const initialState = [
         name_ru: 'Букет 25 роз Нежный микс',
         description_uz: 'Высота: 60 см, Ширина: 35 см',
         description_ru: 'Высота: 60 см, Ширина: 35 см',
-        slug: 'adasd-asdasd',
+        slug: 'qip-qizil-atirgullar-guldastasi',
         price: 13499,
         images: [
             './images/products/product_1.png',
@@ -56,7 +56,7 @@ const initialState = [
         name_ru: 'Букет 25 роз Нежный микс',
         description_uz: 'Высота: 60 см, Ширина: 35 см',
         description_ru: 'Высота: 60 см, Ширина: 35 см',
-        slug: 'adasd-asdasd',
+        slug: 'qip-qizil-atirgullar-guldastasi',
         price: 13499,
         images: [
             './images/products/product_5.png',
@@ -107,7 +107,7 @@ const initialState = [
         name_ru: 'Букет 25 роз Нежный микс',
         description_uz: 'Высота: 60 см, Ширина: 35 см',
         description_ru: 'Высота: 60 см, Ширина: 35 см',
-        slug: 'adasd-asdasd',
+        slug: 'qip-qizil-atirgullar-guldastasi',
         price: 13499,
         images: [
             './images/products/product_6.png',
@@ -158,7 +158,7 @@ const initialState = [
         name_ru: 'Букет 25 роз Нежный микс',
         description_uz: 'Высота: 60 см, Ширина: 35 см',
         description_ru: 'Высота: 60 см, Ширина: 35 см',
-        slug: 'adasd-asdasd',
+        slug: 'qip-qizil-atirgullar-guldastasi',
         price: 13499,
         images: [
             './images/products/product_7.png',

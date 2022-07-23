@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import StoreContext from './context/Context'
+import React from 'react'
 import {
     GlobalFonts,
     GlobalStyles,

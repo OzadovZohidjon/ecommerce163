@@ -15,6 +15,8 @@ import Header from "./Header/Header";
 import AppLayout from "./Layout/AppLayout";
 import { Button } from "./Button/Button";
 import Dropdown from "./Dropdown/Dropdown";
+import Loader from "./Loader/Loader";
+import ProductIntro from "./ProductIntro/ProductIntro";
 
 export {
     Box,
@@ -33,5 +35,7 @@ export {
     Header,
     AppLayout,
     Button,
-    Dropdown
+    Dropdown,
+    Loader,
+    ProductIntro
 }
